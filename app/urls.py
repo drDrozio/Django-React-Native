@@ -4,5 +4,6 @@ from .views import ClassView
 
 urlpatterns = [
     path('testFunction',views.testFunction),
-    path('classview',ClassView.as_view())
+    path('classview',ClassView.as_view()),
+    path('first',views.first),
 ] 
