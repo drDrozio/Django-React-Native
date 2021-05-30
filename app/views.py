@@ -3,10 +3,11 @@ from django.http import HttpResponse
 from django.views import View
 from .models import Book
 from django.shortcuts import render
+from rest_framework import viewsets
+from .serializers import BookSerializer
 
 # Create your views here.
 class ClassView(View):
-
 	books=Book.objects.all()
 	output=''
 
@@ -27,3 +28,7 @@ def first(request):
 	return render(request,'index.html',{'data':'Books Available',
 		'book_names': book_names
 		})
+
+class BookViewSet(viewsets.ModelViewSet):
+	serializer_class=BookSerializer
+	queryset=Book.objects.all()
